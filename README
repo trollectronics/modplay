@@ -1,0 +1,15 @@
+Template project for bare-metal trollbook development
+
+Edit config.mk to suit your needs.
+In particular, change the NAME variable.
+
+Source files and local headers in src.
+Hierarchy is supported, just add subdirectories and copy down Makefile.
+
+Global includes in include folder.
+This folder is added to include path.
+
+Libraries are added as git submodules to the libs folder.
+They will be built and linked in automatically, their include directories are added to include path automatically.
+
+The data directory is for any external data and resources that should accompany your program.
