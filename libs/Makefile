@@ -22,4 +22,5 @@ $(SUBDIRS):
 	@+make -C "$@" $(MAKECMDGOALS)
 
 %.a: $(SUBDIRS)
+	@$(RM) $@
 	@$(AR) -cmT $@ $*/out.a
