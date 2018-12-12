@@ -1,0 +1,30 @@
+[submodule "libs/rickmod"]
+	path = libs/rickmod
+	url = git@github.com:trollectronics/rickmod.git
+[submodule "libs/muil"]
+	path = libs/muil
+	url = git@github.com:trollectronics/muil.git
+[submodule "libs/draw"]
+	path = libs/draw
+	url = git@github.com:trollectronics/draw.git
+[submodule "libs/trollibc"]
+	path = libs/trollibc
+	url = git@github.com:trollectronics/trollibc.git
+[submodule "libs/posix-file"]
+	path = libs/posix-file
+	url = git@github.com:trollectronics/posix-file.git
+[submodule "libs/ucFAT"]
+	path = libs/ucFAT
+	url = git@github.com:trollectronics/ucFAT.git
+[submodule "libs/peripheral"]
+	path = libs/peripheral
+	url = git@github.com:trollectronics/peripheral.git
+[submodule "libs/terminal"]
+	path = libs/terminal
+	url = git@github.com:trollectronics/terminal.git
+[submodule "libs/util"]
+	path = libs/util
+	url = git@github.com:trollectronics/util.git
+[submodule "libs/sound"]
+	path = libs/sound
+	url = git@github.com:trollectronics/sound.git
