@@ -18,8 +18,8 @@ clean: $(SUBDIRS)
 	@$(RM) $(LIBFILES)
 
 $(SUBDIRS):
-	@echo " [ CD ] $(CURRENTPATH)$@"
-	@+make -C "$@" "CURRENTPATH=$(CURRENTPATH)$@" $(MAKECMDGOALS)
+	@echo " [ CD ] $(CURRENTPATH)$@/"
+	@+make -C "$@" "CURRENTPATH=$(CURRENTPATH)$@/" $(MAKECMDGOALS)
 
 %.a: $(SUBDIRS)
 	@$(RM) $@
