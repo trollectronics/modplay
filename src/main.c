@@ -1,7 +1,8 @@
 #include <stdint.h>
+#include <stdio.h>
+#include <sys/file.h>
 #include <draw/font.h>
 #include <font.h>
-#include <printf.h>
 #include <terminal.h>
 #include <interrupt.h>
 #include <muil/muil.h>
@@ -73,6 +74,27 @@ static void print_filesize(uint32_t filesize) {
 		printf("%uM", filesize/(1024U*1024U));
 }
 
+size_t write_terminal(const void *ptr, size_t size, File *f) {
+	size_t i;
+	char *s = (char *) ptr;
+	
+	for(i = 0; i < size; i++)
+		terminal_putc_term(*s++);
+	
+	return size;
+}
+
+FileHandler fh_terminal = {
+	.open = NULL,
+	.close = NULL,
+	.read = NULL,
+	.write = write_terminal,
+};
+
+File file_terminal = {
+	.handler = &fh_terminal,
+};
+
 int main(int argc, char **argv) {
 	int type;
 	char label[12];
@@ -81,6 +103,10 @@ int main(int argc, char **argv) {
 	
 	terminal_init();
 	terminal_clear();
+	
+	stdin = (FILE *) &file_terminal;
+	stdout = (FILE *) &file_terminal;
+	stderr = (FILE *) &file_terminal;
 	
 	printf("Detecting SD card: ");
 	if((type = sd_init()) == SD_CARD_TYPE_INVALID) {
@@ -106,7 +132,7 @@ int main(int argc, char **argv) {
 	fat_get_label(label);
 	printf(" - Volume label: %s\n\n", label);
 	
-	font_small = draw_font_new(smallfont_data, 8, 8);
+	font_small = draw_font_new(vgafont_data, 8, 16);
 	muil_init(4);
 	
 	player_init();

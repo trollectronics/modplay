@@ -1,9 +1,9 @@
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdio.h>
 #include <rickmod.h>
 #include <terminal.h>
 #include <fat.h>
-#include <printf.h>
 #include <mem.h>
 #include <sound.h>
 #include <interrupt.h>
