@@ -107,7 +107,7 @@ void button_up_callback() {
 	last = strrchr(cwd, '/');
 	last[1] = 0;
 	
-	button->enabled = false;
+	muil_widget_enable(button, false);
 	
 	list_dir(cwd, listbox);
 	v.p = cwd;
@@ -130,7 +130,7 @@ void listbox_callback() {
 	v.p = muil_listbox_get(listbox, sel);
 	r = sprintf(buf, "%s%s", cwd, v.p);
 	if(fat_get_stat(buf) & 0x10) {
-		button->enabled = false;
+		muil_widget_enable(button, false);
 		if(sel == selected) {
 			sprintf(cwd, "%s", buf);
 			if(r > 0)
@@ -138,7 +138,7 @@ void listbox_callback() {
 			list_dir(buf, listbox);
 		}
 	} else {
-		button->enabled = true;
+		muil_widget_enable(button, true);
 	}
 	
 	v.p = cwd;
@@ -161,7 +161,7 @@ void browse() {
 	muil_vbox_add_child(vbox, muil_widget_create_spacer(4), 0);
 	muil_vbox_add_child(vbox, button = muil_widget_create_button_text(font_small, "Play"), 0);
 	
-	button->enabled = false;
+	muil_widget_enable(button, false);
 	
 	list_dir(cwd, listbox);
 	v.p = cwd;
