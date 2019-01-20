@@ -133,9 +133,13 @@ int main(int argc, char **argv) {
 	printf(" - Volume label: %s\n\n", label);
 	
 	font_small = draw_font_new(vgafont_data, 8, 16);
-	muil_init(4);
+	muil_init(4, font_small);
 	
 	player_init();
+	
+	terminal_set_bg(TERMINAL_COLOR_CYAN);
+	terminal_clear();
+	terminal_set_bg(TERMINAL_COLOR_BLACK);
 	
 	browse();
 	for(;;);
