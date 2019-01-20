@@ -55,6 +55,10 @@ static struct {
 	struct MuilPaneList pane_list;
 } player_ui;
 
+static void button_stop_callback() {
+	done = true;
+}
+
 void player_init() {
 	player_ui.pane_list.pane = muil_pane_create_title(200, 100, 400, 280, player_ui.vbox = muil_widget_create_vbox(), "MOD Player");
 	player_ui.pane_list.next = NULL;
@@ -67,6 +71,8 @@ void player_init() {
 	muil_hbox_add_child(player_ui.hbox_chan, player_ui.progress_level[1] = muil_widget_create_progressbar(font_small), 1);
 	
 	muil_vbox_add_child(player_ui.vbox, player_ui.button_stop = muil_widget_create_button_text(font_small, "Stop"), 0);
+	
+	player_ui.button_stop->event_handler->add(player_ui.button_stop, button_stop_callback, MUIL_EVENT_TYPE_UI_WIDGET_ACTIVATE);
 }
 
 static void player_ui_volumes_bargraphs() {
