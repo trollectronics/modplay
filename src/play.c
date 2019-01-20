@@ -56,7 +56,7 @@ static struct {
 } player_ui;
 
 void player_init() {
-	player_ui.pane_list.pane = muil_pane_create(200, 100, 400, 280, player_ui.vbox = muil_widget_create_vbox());
+	player_ui.pane_list.pane = muil_pane_create_title(200, 100, 400, 280, player_ui.vbox = muil_widget_create_vbox(), "MOD Player");
 	player_ui.pane_list.next = NULL;
 	
 	muil_vbox_add_child(player_ui.vbox, player_ui.label_title = muil_widget_create_label(font_small, "MOD file"), 0);

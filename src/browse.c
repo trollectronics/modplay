@@ -14,7 +14,6 @@ static MuilWidget *vbox;
 static MuilWidget *hbox;
 static MuilWidget *button;
 static MuilWidget *button_up;
-static MuilWidget *label;
 static MuilWidget *listbox;
 static MuilWidget *entry;
 
@@ -148,14 +147,13 @@ void listbox_callback() {
 
 void browse() {
 	MuilPropertyValue v;
-	panelist.pane = muil_pane_create(20, 20, 320, 480 - 40, vbox = muil_widget_create_vbox());
+	panelist.pane = muil_pane_create_title(20, 20, 320, 480 - 40, vbox = muil_widget_create_vbox(), "Load MOD file");
 	panelist.next = NULL;
 
 	hbox = muil_widget_create_hbox();
 	muil_hbox_add_child(hbox, button_up = muil_widget_create_button_text(font_small, "Up"), 0);
 	muil_hbox_add_child(hbox, entry = muil_widget_create_entry(font_small), 1);
 	
-	muil_vbox_add_child(vbox, label = muil_widget_create_label(font_small, "Load MOD file"), 0);
 	muil_vbox_add_child(vbox, hbox, 0);
 	muil_vbox_add_child(vbox, listbox = muil_widget_create_listbox(font_small), 1);
 	muil_vbox_add_child(vbox, muil_widget_create_spacer(4), 0);
